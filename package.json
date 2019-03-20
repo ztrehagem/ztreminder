@@ -1,15 +1,26 @@
 {
   "name": "ztreminder",
-  "version": "1.0.0",
-  "description": "",
+  "private": true,
   "main": "index.js",
   "scripts": {
+    "watch:functions": "npm --prefix=functions run watch",
+    "watch:client": "npm --prefix=client run watch",
+    "build": "run-s build:*",
+    "build:functions": "npm --prefix=functions run build",
+    "build:client": "npm --prefix=client run build",
+    "prod": "run-s prod:*",
+    "prod:functions": "npm --prefix=functions run prod",
+    "prod:client": "npm --prefix=client run prod",
+    "clean": "run-s clean:*",
+    "clean:functions": "npm --prefix=functions run clean",
+    "clean:client": "rm -r public || true",
+    "serve": "firebase serve --project ztreminder",
+    "predeploy": "run-s clean prod",
+    "deploy": "firebase deploy --project ztreminder",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "firebase-tools": "^6.5.0"
+    "firebase-tools": "^6.5.0",
+    "npm-run-all": "^4.1.5"
   }
 }
